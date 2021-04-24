@@ -1,0 +1,40 @@
+<% if flash[:notice] %>
+   <div class="flash">
+      <%= flash[:notice] %>
+   </div>
+<% end %>
+
+<p id="notice"></p>
+  <div class='container'>
+  <div class='row'>
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  <h1>User info</h1>
+
+  <% if @user.errors.any? %>
+
+    <div class="alert alert-warning">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+
+        <% @user.errors.full_messages.each do |message| %>
+
+          <li class="text-danger"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= form_with model: @user, local:true do |f| %>
+
+  <div class="user-name">Name</div>
+    <%= f.text_field :name %>
+  <div class="user-edit-image">Image</div>
+    <%= f.attachment_field :profile_image %>
+  <div class="form-body">Introduction</div>
+    <%= f.text_area :introduction %><br>
+  <div class="upload">
+    <%= f.submit " Update User" %>
+  </div>
+  </div>
+
+<% end %>
