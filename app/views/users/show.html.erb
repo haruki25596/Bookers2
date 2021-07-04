@@ -1,7 +1,7 @@
 <% if flash[:notice] %>
-      <div class="flash">
-        <%= flash[:notice] %>
-      </div>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
 <% end %>
 
 <%= render 'users/list', user: @user, book: @book %>
